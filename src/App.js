@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-function App() {
+import "./App.scss";
+import Header from "./components/header";
+import ImagesGallery from "./components/imagesGallery";
+import { getRandomImages } from "./store/actions";
+
+const App = () => {
+  const dispatch = useDispatch();
+  const imagesStoreImages = useSelector((state) => state.imagesStore.images);
+  const searchText = useSelector((state) => state.searchStore.searchText);
+
+  useEffect(() => {
+    if (imagesStoreImages.length === 0 && searchText === "") {
+      dispatch(getRandomImages());
+    }
+  }, [imagesStoreImages, searchText, dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <ImagesGallery />
+    </>
   );
-}
+};
 
 export default App;

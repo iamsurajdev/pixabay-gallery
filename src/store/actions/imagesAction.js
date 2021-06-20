@@ -33,15 +33,3 @@ export const resetPage = () => {
     type: actionTypes.RESET_PAGES,
   };
 };
-
-export const sortImagesByViews = () => {
-  return {
-    type: actionTypes.SORT_IMAGE_LIST_BY_VIEWS,
-  };
-};
-
-export const sortImagesBySize = () => {
-  return {
-    type: actionTypes.SORT_IMAGE_LIST_BY_SIZE,
-  };
-};

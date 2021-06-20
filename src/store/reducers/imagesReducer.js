@@ -86,26 +86,6 @@ const reducer = (state = initialState, action) => {
         images: [],
       });
 
-    case actionType.SORT_IMAGE_LIST_BY_SIZE:
-      const sortedArrayBySize = state.images
-        .slice()
-        .sort((a, b) =>
-          a.imageSize < b.imageSize ? 1 : b.imageSize < a.imageSize ? -1 : 0
-        );
-      console.log("Sorted Array By Size : ", sortedArrayBySize);
-      return updateObject(state, {
-        images: sortedArrayBySize,
-      });
-
-    case actionType.SORT_IMAGE_LIST_BY_VIEWS:
-      const sortedArrayByViews = state.images
-        .slice()
-        .sort((a, b) => (a.views < b.views ? 1 : b.views < a.views ? -1 : 0));
-      console.log("Sorted Array By Views : ", sortedArrayByViews);
-      return updateObject(state, {
-        images: sortedArrayByViews,
-      });
-
     default:
       return state;
   }
